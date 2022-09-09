@@ -50,7 +50,7 @@ def multistart_cavi(
                 reads_weights,
                 reads_log_error_proba,
                 start,
-                output_dir,
+                output_name,
                 convergence_threshold,
             ),
             callback=collect_result,
