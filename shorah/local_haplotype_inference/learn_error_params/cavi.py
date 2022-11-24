@@ -34,6 +34,7 @@ def multistart_cavi(
     reads_weights,
     n_starts,
     output_dir,
+    convergence_threshold,
 ):
 
     pool = mp.Pool(mp.cpu_count())
@@ -51,6 +52,7 @@ def multistart_cavi(
                 reads_weights,
                 start,
                 output_dir,
+                convergence_threshold,
             ),
             callback=collect_result,
         )
@@ -72,6 +74,7 @@ def run_cavi(
     reads_weights,
     start_id,
     output_dir,
+    convergence_threshold,
 ):
 
     """
@@ -160,7 +163,7 @@ def run_cavi(
             state_init_dict,
             state_curr_dict,
         )
-        
+
         if iter % 2 == 0:
             history_elbo.append(elbo)
             history_mean_log_pi.append(state_curr_dict["mean_log_pi"])
@@ -182,7 +185,7 @@ def run_cavi(
                 message = "Error: ELBO is decreasing."
                 exitflag = -1
                 break
-            elif np.abs(elbo - history_elbo[-2]) < 1e-03:
+            elif np.abs(elbo - history_elbo[-2]) < convergence_threshold:
                 converged = True
                 k += 1
                 message = "ELBO converged."

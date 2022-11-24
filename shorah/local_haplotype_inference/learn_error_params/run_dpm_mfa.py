@@ -52,6 +52,7 @@ def main(freads_in, fref_in, output_dir, n_starts, K, alpha0, alphabet="ACGT-", 
         reads_weights,
         0,
         output_name,
+        convergence_threshold,
     )]
 
     logging.info("reference " + fref_in)
