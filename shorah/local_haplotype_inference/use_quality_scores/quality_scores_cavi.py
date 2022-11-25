@@ -160,7 +160,7 @@ def run_cavi(
             # relative convergence threshold
             # elif np.abs((elbo - history_elbo[-2])/history_elbo[-2])  < convergence_threshold:
                 converged = True
-                exit_message = "ELBO converged."
+                exit_message = "ELBO converged, with " + str(iter) + " iterations."
 
         state_curr_dict.update({"elbo": elbo})
 
