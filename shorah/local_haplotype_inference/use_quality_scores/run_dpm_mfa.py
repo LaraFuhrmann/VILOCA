@@ -77,19 +77,19 @@ def main(
         ]
 
     elif n_starts > 1:
-        cavi.multistart_cavi(
-            K,
-            alpha0,
-            alphabet,
-            reference_binary,
-            reads_list,
-            reads_seq_binary,
-            reads_weights,
-            reads_log_error_proba,
-            n_starts,
-            output_name,
-            convergence_threshold,
-        )
+        result_list = cavi.multistart_cavi(
+                        K,
+                        alpha0,
+                        alphabet,
+                        reference_binary,
+                        reads_list,
+                        reads_seq_binary,
+                        reads_weights,
+                        reads_log_error_proba,
+                        n_starts,
+                        output_name,
+                        convergence_threshold,
+                    )
 
     logging.info("reference " + fref_in)
     logging.info("reads " + freads_in)
