@@ -1,7 +1,8 @@
-import skbio
+#import skbio
 import numpy as np
-from skbio.sequence.distance import hamming
-from skbio import Sequence
+from Bio import SeqIO
+#from skbio.sequence.distance import hamming
+#from skbio import Sequence
 
 class Read:
     def __init__(self, seq_string, seq_id):
@@ -20,6 +21,20 @@ class Read:
                 seq_table[base_position][alphabet.index(base)]=1
 
         self.seq_binary = seq_table
+
+
+def load_fasta(fname_fasta, alphabet,unique_modus=False):
+
+    with open(fname_qualities, "rb") as f:
+        qualities = np.load(f, allow_pickle=True)
+
+    # go through each sequence in fasta file
+    reads_list = []
+    for idx, seq in enumerate(SeqIO.parse(fname_fasta, "fasta")):
+        reads_list.append(Read(seq.seq, seq.id))
+        reads_list[-1].seq2binary(alphabet)
+
+    return reads_list
 
 
 def reads_list_to_array(reads_list):
@@ -47,6 +62,7 @@ def reads_list_to_array(reads_list):
 
     return reads_binary_array, reads_weights_array
 
+"""
 def load_fasta2reads_list(reads_fasta_file, alphabet):
     # go through each sequence in fasta file
     reads_list =[]
@@ -54,9 +70,10 @@ def load_fasta2reads_list(reads_fasta_file, alphabet):
         reads_list.append(Read(str(seq),seq.metadata['id']))
         reads_list[-1].seq2binary(alphabet)
     # unique reads_list
-    reads_list = unique_reads_list(reads_list)
+    #reads_list = unique_reads_list(reads_list)
 
     return reads_list
+"""
 
 def load_bam2reads_list(reads_fasta_file, alphabet):
     # go through each sequence in fasta file
@@ -85,7 +102,7 @@ def load_bam2reads_list(bam_file, alphabet):
 
     return reads_list
 
-
+"""
 def unique_reads_list(reads_list):
     # test for unique reads_list
     for i, temp_read in enumerate(reads_list):
@@ -100,6 +117,7 @@ def unique_reads_list(reads_list):
     # keep only unique reads_list
     reads_list=[read for read in reads_list if read.weight>0]
     return reads_list
+"""
 
 def load_reference_seq(reference_file):
     for seq in skbio.io.read(reference_file, format='fasta'):

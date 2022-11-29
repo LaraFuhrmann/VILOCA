@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import pandas as pd
-import skbio
+#import skbio
 import numpy as np
 import sys
 import os
@@ -47,7 +47,7 @@ def main(freads_in, fref_in, output_dir, n_starts, K, alpha0, alphabet = 'ACGT-'
     reference_seq, ref_id = preparation.load_reference_seq(fref_in)
     reference_binary = preparation.reference2binary(reference_seq, alphabet)
     if freads_in.endswith('fasta') or freads_in.endswith('fas'):
-        reads_list= preparation.load_fasta2reads_list(freads_in, alphabet)
+        reads_list= preparation.load_fasta(freads_in, alphabet)
     elif freads_in.endswith('bam'):
         reads_list= preparation.load_bam2reads_list(freads_in, alphabet)
 
