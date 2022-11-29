@@ -127,7 +127,7 @@ def load_reference_seq(reference_file):
 
 def load_reference_seq(reference_file, alphabet):
     for seq in SeqIO.parse(reference_file, "fasta"):
-        return reference2binary(seq.seq, alphabet), seq.id
+        return seq.seq, seq.id
 
 def reference2binary(reference_seq, alphabet):
     length_seq = len(reference_seq)
