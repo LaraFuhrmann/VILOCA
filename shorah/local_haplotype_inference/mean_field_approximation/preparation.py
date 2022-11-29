@@ -25,9 +25,6 @@ class Read:
 
 def load_fasta(fname_fasta, alphabet,unique_modus=False):
 
-    with open(fname_qualities, "rb") as f:
-        qualities = np.load(f, allow_pickle=True)
-
     # go through each sequence in fasta file
     reads_list = []
     for idx, seq in enumerate(SeqIO.parse(fname_fasta, "fasta")):
