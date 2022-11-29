@@ -52,8 +52,8 @@ else:
 
 # import local haplotype inference methods
 from .local_haplotype_inference.mean_field_approximation import run_dpm_mfa
-from .local_haplotype_inference.CRP_gibbs_sampling import sampling_main as run_gibbs
-from .local_haplotype_inference.numpyro_implementation import run_mcmc
+#from .local_haplotype_inference.CRP_gibbs_sampling import sampling_main as run_gibbs
+#from .local_haplotype_inference.numpyro_implementation import run_mcmc
 
 #################################################
 # a common user should not edit above this line #
@@ -233,7 +233,7 @@ def run_dpm(run_setting):
                          K=int(inference_config['n_cluster']),
                          alpha0=float(inference_config['alpha0']),
                          alphabet = 'ACGT-')
-
+            """
             elif inference_config['method'] == 'gibbs_sampling':
                 run_gibbs.main(freads_in=filein,
                                fref_in=ref_in,
@@ -255,6 +255,7 @@ def run_dpm(run_setting):
                                thres_ess_max = float(inference_config['threshold_ess_max']),
                                thres_rhat = float(inference_config['threshold_rhat'])
                                )
+            """
 
     return
 
