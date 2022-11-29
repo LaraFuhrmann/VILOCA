@@ -1,6 +1,6 @@
 import numpy as np
-from skbio.sequence.distance import hamming
-from skbio import Sequence
+#from skbio.sequence.distance import hamming
+#from skbio import Sequence
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
@@ -66,7 +66,7 @@ def summarize_results(state_curr_dict,alphabet, reads_seq_binary, reads_weights,
                              })
 
     return dict_summary
-
+"""
 def write_info2file(state_curr_dict, outfile, alphabet, reads_list, reads_seq_binary, reads_weights,reference_binary, reference_seq):
 
     mean_z = state_curr_dict['mean_cluster']
@@ -124,6 +124,7 @@ def write_info2file(state_curr_dict, outfile, alphabet, reads_list, reads_seq_bi
         #outfile.write('Assigned all reads '+str(analyze_results.get_assigned_all_reads(unique_cluster, k,reads_list))+ '\n')
 
     return outfile
+"""
 
 def get_haplotype(mean_h_k, alphabet):
     haplotype_sequence = []
