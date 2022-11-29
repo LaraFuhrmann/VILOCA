@@ -125,7 +125,7 @@ def load_reference_seq(reference_file):
 
 """
 
-def load_reference_seq(reference_file, alphabet):
+def load_reference_seq(reference_file):
     for seq in SeqIO.parse(reference_file, "fasta"):
         return seq.seq, seq.id
 
