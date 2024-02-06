@@ -158,5 +158,5 @@ def reference2binary(reference_seq, alphabet):
     length_seq = len(reference_seq)
     reference_table = np.zeros((length_seq, len(alphabet)))
     for base_position, base in enumerate(str(reference_seq)):
-        reference_table[base_position][alphabet.index(base)] = 1
+        reference_table[base_position][alphabet.index(base.upper())] = 1
     return reference_table
